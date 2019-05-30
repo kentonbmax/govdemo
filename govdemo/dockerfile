@@ -1,0 +1,15 @@
+FROM duluca/minimal-nginx-web-server:1.14.0-alpine
+
+RUN rm /etc/nginx/nginx.conf /etc/nginx/mime.types
+
+COPY nginx/basic.conf /etc/nginx/basic.conf
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/mime.types /etc/nginx/mime.types
+COPY nginx/default /etc/nginx/sites-enabled/default
+
+ADD nginx/nginx.crt /etc/nginx/ssl/
+ADD nginx/nginx.key /etc/nginx/ssl/
+
+COPY dist /var/www
+EXPOSE 443 
+CMD 'nginx'
