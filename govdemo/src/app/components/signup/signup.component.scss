@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+
 }
 
 .flex-container-col {
@@ -9,5 +10,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+mat-form-field {
+    padding: 10px;
+    margin: 5px;
 }
 

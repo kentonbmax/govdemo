@@ -12,10 +12,11 @@
       <mat-form-field>
         <input matInput placeholder="first name" formControlName="firstName" [(ngModel)]="value">
       </mat-form-field>
-      <mat-form-field style="margin-left: 5px;">
+      <mat-form-field>
         <input matInput placeholder="last name">
       </mat-form-field>
     </div>
   </form>
+  <button mat-raised-button (click)="save()" [disabled]="!signupForm.dirty">Save</button>
 </mat-card>
 
