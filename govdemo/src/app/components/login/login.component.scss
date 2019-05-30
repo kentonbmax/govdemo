@@ -2,12 +2,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
 
-    background: url(/assets/stephan-valentin-345970-unsplash.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+form {
+    padding: 5px;
 }
 
 .image {
@@ -20,4 +18,5 @@
 button {
     width: 20%;
     margin: 4px;
+    background: white;
 }
