@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   private loginMdl = { email: '', password: ''};
   public readonly loginForm = new FormGroup({
-    email: new FormControl( this.loginMdl.email, Validators.pattern('^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@inmar.com')),
-    pass: new FormControl('pass')
+    email: new FormControl( this.loginMdl.email, [Validators.required, Validators.maxLength(6), Validators.pattern('^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@inmar.com')]),
+    pass: new FormControl(this.loginMdl.password, [Validators.required, Validators.maxLength(6)])
   });
 
   constructor(private router: Router) { }
