@@ -6,7 +6,7 @@
     "start": "ng serve",
     "start:server": "node ./server/server.js",
     "build": "ng build",
-    "build:nginx": "ng build --prod -environment=nginx",
+    "build:nginx": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
