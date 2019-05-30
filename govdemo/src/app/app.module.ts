@@ -8,12 +8,15 @@ import { MatButtonModule, MatCardModule, MatSidenavModule, MatInputModule } from
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ManageContactsComponent } from './components/manage-contacts/manage-contacts.component';
+import { AuthorizationService } from './services/authorization.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
+    ManageContactsComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSidenavModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [
+    AuthorizationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
