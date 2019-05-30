@@ -10,6 +10,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManageContactsComponent } from './components/manage-contacts/manage-contacts.component';
 import { AuthorizationService } from './services/authorization.service';
+import { ContactsService } from './services/contacts.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthorizationService } from './services/authorization.service';
     MatInputModule
   ],
   providers: [
-    AuthorizationService
+    AuthorizationService,
+    ContactsService
   ],
   bootstrap: [AppComponent]
 })
