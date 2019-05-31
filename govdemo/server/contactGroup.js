@@ -2,9 +2,7 @@
 const _ = require('lodash');
 const _groups = [];
 module.exports = class ContactGroup {
-    constructor(enabled, name){
-        this.enabled = enabled;
-        this.name = name;
+    constructor(){
     }
 
     add(name) {
@@ -17,5 +15,9 @@ module.exports = class ContactGroup {
         if(index > -1) {
             _groups[index].enabled = status;
         }
+    }
+
+    getByEmail(email) {
+
     }
 }

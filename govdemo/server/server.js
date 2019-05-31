@@ -22,9 +22,10 @@ app.use(function(req, res, next) {
 });
 
 const Logins = require('./logins')
-
+const ContactGroup = require('./ContactGroup');
 
 let loginData = new Logins();
+let contactGroupData = new ContactGroup();
 
 app.get('/healthcheck', async (req, res) => {
   res.send('hi!')
@@ -71,12 +72,12 @@ app.post('/login', (req, res) => {
     res.send({status: 'Login successful!'});
 })
 
-app.put('/contact/group', (req, res) => {
+app.post('/contact/group', (req, res) => {
 
 })
 
 app.get('/contact/group', (req, res) => {
-  
+  contactGroupData.get
 })
 
 var httpServer = http.createServer(app);
