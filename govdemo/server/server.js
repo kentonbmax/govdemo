@@ -33,6 +33,14 @@ app.get('/healthcheck', async (req, res) => {
 app.post('/signup', (req, res) => {
   var signup = req.body;
 
+  if (!signup.email || 
+    !signup.password || 
+    !signup.firstName ||
+    !signup.email.includes('@') ||
+    signup.password.length < 6) {
+    res.send(404);
+  }
+
   var result = loginData.add(signup.email, signup.password);
 
   if(!result) {

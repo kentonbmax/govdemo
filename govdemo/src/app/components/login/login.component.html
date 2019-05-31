@@ -1,6 +1,6 @@
-<div class="flex-container">
+<div class="flex-container-col">
   <mat-card style="width: 65%">
-    <form [formGroup]="loginForm" class="flex-container" (onSubmit)="login()">
+    <form [formGroup]="loginForm" class="flex-container-col" (onSubmit)="login()">
       <mat-form-field>
         <input matInput placeholder="email" formControlName="email">
       </mat-form-field>
@@ -12,8 +12,8 @@
         <input type="password" matInput placeholder="password" formControlName="password">
       </mat-form-field>
     </form>
-    <div class="flex-container">
-      <button mat-raised-button color="primary" (click)="login()">Login</button>
+    <div class="flex-container-col">
+      <button mat-raised-button color="primary" (click)="login()" [disabled]="!loginForm.valid">Login</button>
       <button mat-raised-button routerLink="/signup">Sign Up</button>
     </div>
   </mat-card>
