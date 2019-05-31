@@ -49,14 +49,18 @@ app.post('/signup', (req, res) => {
 
 app.post('/login', async (req, res) => {
   const login = req.body;
-  if (!login.email || !login.password) {
-
-    if(!login.email.includes('@') || !loginData.valid(login.email, login.password)){
-      res.send(401);
-    } else {
-      res.send(200);
-    }
+  if (!login.email || 
+    !login.password || 
+    !login.email.includes('@') ||
+    login.password.length < 6) {
+    res.send(404);
   }
+
+    if(!loginData.valid(login.email, login.password)){
+      res.send(401);
+    }
+
+    res.sendStatus(200);
 })
 
 app.put('/contact/group', async (req, res) => {

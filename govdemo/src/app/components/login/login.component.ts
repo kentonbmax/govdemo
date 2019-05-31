@@ -19,20 +19,22 @@ export class LoginComponent implements OnInit {
     this.loginForm = new FormGroup({
       email: new FormControl(
         '', [Validators.required, Validators.maxLength(6), Validators.pattern('^[a-z0-9._%+-]+@inmar.com')]),
-      pass: new FormControl('', [Validators.required, Validators.maxLength(6)])
+      password: new FormControl('', [Validators.required, Validators.maxLength(6)])
     });
   }
 
   get controls() { return this.loginForm.controls; }
 
   login() {
-    let res: boolean = this.auth.login(this.loginForm.value);
-
-    if(!res) {
+    this.auth.login(this.loginForm.value).subscribe( (data) => {
+      localStorage.setItem('token', 'true');
+      this.router.navigateByUrl('contacts');
+  }, err => {
+      localStorage.setItem('token', 'false');
       this._snackBar.open('You are not authorized', 'dismiss', {
         duration: 3000,
       });
-    }
+  });
 
   }
 }

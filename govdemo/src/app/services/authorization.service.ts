@@ -14,21 +14,13 @@ export class AuthorizationService {
     get status(): boolean {
         return Boolean(localStorage.getItem('token'));
     }
-    public signup(signup: SignUp): Observable<any> { 
+    public signup(signup: SignUp): Observable<any> {
         const url = `${ environment.serverUrl}/signup`;
         return this.http.post(url, signup);
-    } 
+    }
 
-    public login (formData: any): boolean {
+    public login (formData: any): Observable<any> {
         const url = `${ environment.serverUrl}/login`;
-        this.http.post<boolean>(url, formData).subscribe( (data) => {
-            localStorage.setItem('token', 'true');
-            return true;
-        }, err => {
-            localStorage.setItem('token', 'false');
-            return false;
-        });
-
-        return false;
+        return this.http.post(url, formData);
     }
 }
