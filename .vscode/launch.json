@@ -8,7 +8,8 @@
       "type": "node",
       "request": "launch",
       "name": "Debug Server",
-      "program": "${workspaceFolder}\\govdemo\\server\\server.js",
+      "program": "${workspaceFolder}/govdemo/server/server.js",
+      "cwd": "${workspaceFolder}/govdemo",
       "outFiles": [
         "${workspaceFolder}/**/*.js"
       ]

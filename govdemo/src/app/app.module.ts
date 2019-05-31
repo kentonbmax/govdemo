@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManageContactsComponent } from './components/manage-contacts/manage-contacts.component';
 import { AuthorizationService } from './services/authorization.service';
 import { ContactsService } from './services/contacts.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ContactsService } from './services/contacts.service';
     ManageContactsComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

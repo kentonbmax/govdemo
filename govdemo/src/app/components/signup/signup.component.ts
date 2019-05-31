@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormGroupName } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignUp } from 'src/app/models/signup';
+import { AuthorizationService } from '../../services/authorization.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,20 +10,30 @@ import { SignUp } from 'src/app/models/signup';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  private signUp: SignUp = new SignUp();
-  public readonly signupForm = new FormGroup({
-    email: new FormControl( this.signUp.email, Validators.pattern('^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@inmar.com')),
-    password: new FormControl(this.signUp.password, [Validators.required]),
-    firstName: new FormControl(this.signUp.firstName, [Validators.required]),
-    lastName: new FormControl(this.signUp.lastName, [Validators.required]),
-  });
-  constructor(private router: Router) { }
+  private signup: SignUp = new SignUp();
+  public errorMsg = 'There was an issue with your data';
+  public signupForm: FormGroup;
+
+  constructor(private router: Router, private auth: AuthorizationService) { }
 
   ngOnInit() {
+    this.signupForm = new FormGroup({
+      email:
+        new FormControl( this.signup.email, Validators.pattern('^[a-z0-9._%+-]+@inmar.com')),
+      password: new FormControl(this.signup.password, [Validators.required, Validators.minLength(6)]),
+      firstName: new FormControl(this.signup.firstName, [Validators.required]),
+      lastName: new FormControl(this.signup.lastName, [Validators.required]),
+    });
   }
 
+  get controls() { return this.signupForm.controls; }
+
   save() {
-    this.router.navigateByUrl('');
+    this.auth.signup(this.signupForm.value).subscribe( (data) => {
+      this.router.navigateByUrl('');
+    }, err => {
+
+    });
   }
 
 }

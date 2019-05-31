@@ -1,20 +1,36 @@
 <mat-card class="flex-container-col">
-  <form [formGroup]="signupForm">
+  <form [formGroup]="signupForm" (ngSubmit)="save()">
     <div>
       <mat-form-field>
-        <input matInput placeholder="email" formControlName="email" [(ngModel)]="value">
+        <input matInput placeholder="email" formControlName="email" [(ngModel)]="signup.email">
       </mat-form-field>
+      
+      <div *ngIf="controls.email.dirty && controls.email.errors" class="invalid">
+        <div *ngIf="controls.email.errors.required">Email is required</div>
+        <div *ngIf="controls.email.errors.pattern">Email must be valid email and from @inmar.com</div>
+      </div>
       <mat-form-field>
-        <input matInput placeholder="password" formControlName="password" [(ngModel)]="value">
+        <input matInput placeholder="password" formControlName="password">
       </mat-form-field>
+      <div *ngIf="controls.password.dirty && controls.password.errors" class="invalid">
+        <div *ngIf="controls.password.errors.required">Password is required</div>
+        <div *ngIf="controls.password.errors.minlength">Must be at least 6 characters</div>
+        {{controls.password.errors[0]}}
+      </div>
     </div>
     <div>
       <mat-form-field>
-        <input matInput placeholder="first name" formControlName="firstName" [(ngModel)]="value">
+        <input matInput placeholder="first name" formControlName="firstName">
       </mat-form-field>
+      <div *ngIf="controls.firstName.dirty && controls.firstName.errors" class="invalid">
+        <div *ngIf="controls.firstName.errors.required">First name is required</div>
+      </div>
       <mat-form-field>
-        <input matInput placeholder="last name">
+        <input matInput placeholder="last name" formControlName="lastName">
       </mat-form-field>
+      <div *ngIf="controls.lastName.dirty && controls.lastName.errors" class="invalid">
+        <div *ngIf="controls.lastName.errors.required">Last name is required</div>
+      </div>
     </div>
   </form>
   <button mat-raised-button (click)="save()" [disabled]="!signupForm.dirty">Save</button>
