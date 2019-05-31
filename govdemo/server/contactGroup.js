@@ -2,7 +2,7 @@
 const _ = require('lodash');
 const _groups = [];
 module.exports = class ContactGroup {
-    constructor(){
+    constructor() {
     }
 
     add(email, name) {
@@ -22,4 +22,4 @@ module.exports = class ContactGroup {
     getByEmail(email) {
         return _.filter(_groups, { email: email });
     };
-};
+}

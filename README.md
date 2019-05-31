@@ -1,5 +1,5 @@
 # Govdemo
-# All rights reserved. Use of this code is not permitted unless through written consent. 
+# All rights reserved. 
 
 
 ## Dev 
