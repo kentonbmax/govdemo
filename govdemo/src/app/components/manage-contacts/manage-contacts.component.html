@@ -1,6 +1,14 @@
 <div class="flex-container-col">
   <h1>Manage Contact Groups</h1>
   <mat-card>
+    <div>
+        <ul>
+            <li *ngFor="let group of contactGroups">
+              {{ group.name }}
+              <span style="display:inline-block;text-align: right">Enabled: <mat-slide-toggle [(ngModel)]="group.Enabled"></mat-slide-toggle></span>
+            </li>
+          </ul>
+    </div>
     <div class="float-bottom-btn">
       <button mat-fab color="warn" aria-label="Add Contact Group" (click)="showDialog()">+</button>
     </div>

@@ -14,8 +14,8 @@ export class AuthorizationService {
     constructor(private http: HttpClient) {}
 
     // should have jwt in cookie
-    get status(): boolean {
-        return Boolean(localStorage.getItem('token'));
+    get status(): string {
+        return localStorage.getItem('token');
     }
     public signup(signup: SignUp): Observable<any> {
         const url = `${ environment.serverUrl}/signup`;

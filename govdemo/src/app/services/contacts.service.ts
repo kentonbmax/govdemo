@@ -1,7 +1,9 @@
 import { environment } from "src/environments/environment";
 import { Observable } from "rxjs";
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class ContactsService{
     constructor(private http: HttpClient) {
         
@@ -19,8 +21,8 @@ export class ContactsService{
 
     public getContactGroup (email: string): Observable<any> {
         const data = {email: email };
-        const url = `${ environment.serverUrl}/contact/group`;
-        return this.http.put<any>(url, data);
+        const url = `${ environment.serverUrl}/contact/group/email/${email}`;
+        return this.http.get<any>(url);
     }
 
     public addContact (formData: any): Observable<any> {

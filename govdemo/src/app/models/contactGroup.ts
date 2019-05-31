@@ -1,7 +1,8 @@
 import { Contact } from "./contact";
 
 export class ContactGroup {
-  public enabled: boolean;
+  public email: string;
   public name: string;
+  public enabled: boolean;
   public contacts: Contact[];
 }

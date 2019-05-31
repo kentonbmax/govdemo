@@ -5,8 +5,10 @@ module.exports = class ContactGroup {
     constructor(){
     }
 
-    add(name) {
-        _groups.push({enabled: true, name: name });
+    add(email, name) {
+        const group = {email: email, enabled: true, name: name, contacts: [] };
+        _groups.push(group);
+        return group;
     }
 
     updateStatus(name, status) {
@@ -18,6 +20,6 @@ module.exports = class ContactGroup {
     }
 
     getByEmail(email) {
-
-    }
-}
+        return _.filter(_groups, { email: email });
+    };
+};

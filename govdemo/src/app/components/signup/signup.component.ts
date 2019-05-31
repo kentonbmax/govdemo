@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormGroupName } from '@angular/form
 import { Router } from '@angular/router';
 import { SignUp } from 'src/app/models/signup';
 import { AuthorizationService } from '../../services/authorization.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +15,9 @@ export class SignupComponent implements OnInit {
   public errorMsg = 'There was an issue with your data';
   public signupForm: FormGroup;
 
-  constructor(private router: Router, private auth: AuthorizationService) { }
+  constructor(private router: Router, 
+    private auth: AuthorizationService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -31,9 +34,11 @@ export class SignupComponent implements OnInit {
   save() {
     this.auth.signup(this.signupForm.value).subscribe( (data) => {
       this.router.navigateByUrl('');
-    }, err => {
-      this.router.navigateByUrl('');
-    });
+    }, (err) => {
+      this._snackBar.open('Account already exists', 'dismiss', {
+        duration: 3000,
+      });
+  });
   }
 
 }

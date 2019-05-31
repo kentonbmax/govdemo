@@ -48,7 +48,7 @@ app.post('/signup', (req, res) => {
     res.send(401);
   } 
   try {
-    res.send(200);
+    res.send({status: 200});
   }
   catch(err) {
     console.log(err);
@@ -69,15 +69,21 @@ app.post('/login', (req, res) => {
       res.send(401);
     }
 
-    res.send({status: 'Login successful!'});
+    res.send({status: 'Login successful!', email: login.email});
 })
 
 app.post('/contact/group', (req, res) => {
-
+  const contractGroup = req.body;
+  const group = contactGroupData.add(contractGroup.email, contractGroup.name);
+  res.send(group);
 })
 
-app.get('/contact/group', (req, res) => {
-  contactGroupData.get
+app.get('/contact/group/email/:email', (req, res) => {
+  const email = req.params.email;
+
+  const result = contactGroupData.getByEmail(email);
+
+  res.send(result);
 })
 
 var httpServer = http.createServer(app);

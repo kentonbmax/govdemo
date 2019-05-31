@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.submitted = true;
-    this.auth.login(this.loginForm.value).subscribe( (data) => {
-      localStorage.setItem('token', 'true');
+    this.auth.login(this.loginForm.value).subscribe( (data: any) => {
+      localStorage.setItem('token', data.email);
       this.router.navigateByUrl('contacts');
   }, (err) => {
-      localStorage.setItem('token', 'false');
+      localStorage.setItem('token', '');
       this._snackBar.open('You are not authorized', 'dismiss', {
         duration: 3000,
       });
