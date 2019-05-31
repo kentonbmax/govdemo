@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
+  public submitted: boolean;
   constructor(private router: Router,
     private auth: AuthorizationService,
     private _snackBar: MatSnackBar) { }
@@ -26,10 +27,11 @@ export class LoginComponent implements OnInit {
   get controls() { return this.loginForm.controls; }
 
   login() {
+    this.submitted = true;
     this.auth.login(this.loginForm.value).subscribe( (data) => {
       localStorage.setItem('token', 'true');
       this.router.navigateByUrl('contacts');
-  }, err => {
+  }, (err) => {
       localStorage.setItem('token', 'false');
       this._snackBar.open('You are not authorized', 'dismiss', {
         duration: 3000,

@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -47,7 +47,7 @@ app.post('/signup', (req, res) => {
 
 });
 
-app.post('/login', async (req, res) => {
+app.post('/login', (req, res) => {
   const login = req.body;
   if (!login.email || 
     !login.password || 
@@ -60,14 +60,14 @@ app.post('/login', async (req, res) => {
       res.send(401);
     }
 
-    res.sendStatus(200);
+    res.send({status: 'Login successful!'});
 })
 
-app.put('/contact/group', async (req, res) => {
+app.put('/contact/group', (req, res) => {
 
 })
 
-app.get('/contact/group', async (req, res) => {
+app.get('/contact/group', (req, res) => {
   
 })
 
