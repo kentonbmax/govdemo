@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
     this.auth.signup(this.signupForm.value).subscribe( (data) => {
       this.router.navigateByUrl('');
     }, err => {
-
+      this.router.navigateByUrl('');
     });
   }
 

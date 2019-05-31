@@ -13,12 +13,7 @@ class Logins {
     }
 }
 
-class ContactGroup {
-    constructor(enabled, name){
-        this.enabled = enabled;
-        this.name = name;
-    }
-}
+
 
 class Contact {
     constructor(email, phone, address) {

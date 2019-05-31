@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthorizationService } from '../../services/authorization.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,9 @@ import { AuthorizationService } from '../../services/authorization.service';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
-  constructor(private router: Router, private auth: AuthorizationService) { }
+  constructor(private router: Router,
+    private auth: AuthorizationService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -23,7 +26,13 @@ export class LoginComponent implements OnInit {
   get controls() { return this.loginForm.controls; }
 
   login() {
-    let res = this.auth.login(this.loginForm.value);
+    let res: boolean = this.auth.login(this.loginForm.value);
+
+    if(!res) {
+      this._snackBar.open('You are not authorized', 'dismiss', {
+        duration: 3000,
+      });
+    }
 
   }
 }

@@ -18,7 +18,7 @@ module.exports = class Logins {
     valid(email, password) {
         if(logins && logins.length > 0) {
             var result = _.find(logins, {email: email })
-            return result.password === password;
+            return result ? result.password === password : false;
         }
     }
 

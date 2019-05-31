@@ -38,16 +38,21 @@ app.post('/signup', (req, res) => {
   if(!result) {
     res.send(401);
   } 
+  try {
+    res.send(200);
+  }
+  catch(err) {
+    console.log(err);
+  }
 
-  res.send(200);
 });
 
 app.post('/login', async (req, res) => {
   const login = req.body;
-  if (!login || !login.email) {
+  if (!login.email || !login.password) {
 
     if(!login.email.includes('@') || !loginData.valid(login.email, login.password)){
-      res.send().status(401);
+      res.send(401);
     } else {
       res.send(200);
     }
