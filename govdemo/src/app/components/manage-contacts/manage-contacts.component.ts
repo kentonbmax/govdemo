@@ -22,6 +22,7 @@ export class ManageContactsComponent implements OnInit {
 
   ngOnInit() {
     this.email = this.authService.status;
+    this.getGroups();
   }
 
   getGroups() {
