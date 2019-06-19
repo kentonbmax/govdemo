@@ -4,7 +4,7 @@
       <mat-form-field>
         <input matInput placeholder="email" formControlName="email">
       </mat-form-field>
-      <div *ngIf="submitted && controls.email.errors" class="invalid">
+      <div *ngIf="submitted" class="invalid">
         <div *ngIf="controls.email.errors.required">Email is required</div>
         <div *ngIf="controls.email.errors.pattern">Email must be valid email and from @inmar.com</div>
       </div>
@@ -13,7 +13,7 @@
       </mat-form-field>
     </form>
     <div class="flex-container-col">
-      <button mat-raised-button color="primary" (click)="login()" [disabled]="!loginForm.valid">Login</button>
+      <button mat-raised-button color="primary" (click)="login()">Login</button>
       <button mat-raised-button routerLink="/signup">Sign Up</button>
     </div>
   </mat-card>
