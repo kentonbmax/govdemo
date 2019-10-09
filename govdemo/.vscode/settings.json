@@ -1,0 +1,4 @@
+{
+    "ng-evergreen.checkFrequency": "On Load",
+    "ng-evergreen.upgradeChannel": "Latest"
+}
