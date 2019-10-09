@@ -2,7 +2,7 @@
   <form [formGroup]="signupForm" (ngSubmit)="save()">
     <div>
       <mat-form-field>
-        <input matInput placeholder="email" formControlName="email" [(ngModel)]="signup.email">
+        <input matInput placeholder="email" formControlName="email">
       </mat-form-field>
       
       <div *ngIf="controls.email.dirty && controls.email.errors" class="invalid">

@@ -11,7 +11,6 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  private signup: SignUp = new SignUp();
   public errorMsg = 'There was an issue with your data';
   public signupForm: FormGroup;
 
